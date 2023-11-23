@@ -1,0 +1,36 @@
+version: '2.21'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts-jdk17
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - /bin/docker:/usr/bin/docker
+      - /var/run/docker.sock:/var/run/docker.sock
+      - jenkins_data:/var/jenkins_home
+    container_name: jenkins
+    command: mkdir /opt/result && mkdir /opt/reports
+
+  jmeter-master:
+    build:
+      context: .    
+      dockerfile: /Docker-images/Dockerfile
+    image: jmeter-alpine
+    tty: true
+
+  jmeter-slave-1:
+    image: jmeter-alpine
+    tty: true
+    # Add any additional configuration for the slave
+
+  jmeter-slave-2:
+    image: jmeter-alpine
+    tty: true
+    # Add any additional configuration for the slave
+
+volumes:
+  jenkins_data:
+    name: my_jenkins_volume
