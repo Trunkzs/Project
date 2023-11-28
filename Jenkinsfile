@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Run Jmeter test') {
       steps {
-        sh 'docker exec jmeter-master bash -c "$JMETER -n -t /opt/github/$JOB_NAME/SummaryReport.jmx -l /opt/result/TestResult-$BUILD_NUMBER.csv -e -o /opt/reports/$BUILD_NUMBER -R172.27.0.3"'   
+        sh 'docker exec jmeter-master bash -c "/opt/apache-jmeter-5.6.2/bin -n -t /opt/github/$JOB_NAME/SummaryReport.jmx -l /opt/result/TestResult-$BUILD_NUMBER.csv -e -o /opt/reports/$BUILD_NUMBER -R172.27.0.3"'   
     }
     }
     stage('Copy HTML from Jmeter to Jenkins'){
