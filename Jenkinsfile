@@ -22,16 +22,8 @@ pipeline {
   }
   post {
     always {
-      publishHTML([
-                        reportName: 'HTML Reports',
-                        reportDir: '/opt/reports/$BUILD_NUMBER',
-                        reportFiles: 'index.html', 
-                        reportTitles: 'Jmeter-report', 
-                        keepAll: true,
-                        alwaysLinkToLastBuild: true,
-                        allowMissing: false
-                    ])
-      }
-
+      publishHTML(reportName: 'HTML Reports', reportDir: '/opt/reports/$BUILD_NUMBER', reportFiles: 'index.html', reportTitles: 'Jmeter-report', keepAll: true, alwaysLinkToLastBuild: true, allowMissing: false)
     }
+
   }
+}
