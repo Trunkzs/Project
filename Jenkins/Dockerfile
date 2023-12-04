@@ -12,5 +12,6 @@ RUN jenkins-plugin-cli \
     git \
     workflow-aggregator \
     blueocean \
-    htmlpublisher
+    htmlpublisher \
+    slack
       
