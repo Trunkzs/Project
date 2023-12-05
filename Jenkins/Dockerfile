@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:lts-jdk17
+FROM docker pull jenkins/jenkins:2.426-jdk17
 
 #ENV
 

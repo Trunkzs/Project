@@ -1,10 +1,10 @@
-version: '2.21'
+version: '3.1'
 
 services:
   jenkins:
     restart: always
     build:
-      context: ./jenkins 
+      context: . 
     image: jenkins
     ports:
       - "8080:8080"
@@ -15,41 +15,6 @@ services:
       - jenkins_data:/var/jenkins_home
     container_name: jenkins
 
-  jmeter-master:
-    build:
-      context: ./jmeter   
-    image: jmeter-alpine
-    tty: true
-    networks:
-      mynetwork:
-        ipv4_address: 172.27.0.2
-    container_name: jmeter-master
-
-  jmeter-slave-1:
-    image: jmeter-alpine
-    tty: true
-    networks:
-      mynetwork:
-        ipv4_address: 172.27.0.3
-    container_name: jmeter-slave1    
-    # Add any additional configuration for the slave
-
-  jmeter-slave-2:
-    image: jmeter-alpine
-    tty: true
-    networks:
-      mynetwork:
-        ipv4_address: 172.27.0.4
-    container_name: jmeter-slave2    
-    # Add any additional configuration for the slave
-
 volumes:
   jenkins_data:
     name: my_jenkins_volume
-networks:
-  mynetwork:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.27.0.0/16  # Define the subnet for the network
-          gateway: 172.27.0.1     

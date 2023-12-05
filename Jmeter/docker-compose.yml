@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  jmeter-master:
+    build:
+      context: .   
+    image: jmeter-alpine
+    tty: true
+    container_name: jmeter-master
+
+  slave:
+    image: jmeter-alpine
+    tty: true
+    container_name: jmeter-slave1    
+    # Add any additional configuration for the slave

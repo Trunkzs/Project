@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Pull source code from github'){
+            steps{
+                script{
+                    sh 'cd /opt/'
+                    sh 'git clone https://github.com/Trunkzs/Project.git '
+                }
+            }
+        }
+        stage('Initialize JMeter Containers') {
+            steps {
+                script {
+                    sh 'cd /opt/Jmeter/'
+                    sh 'docker compose up -d --scale slave = 5' //change number appropriate 
+                }
+            }
+        }
+    }
+}
