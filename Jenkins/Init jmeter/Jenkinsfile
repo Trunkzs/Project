@@ -13,7 +13,7 @@ pipeline {
         stage('Initialize JMeter Containers') {
             steps {
                 script {
-                    sh 'cd /opt/Jmeter/'
+                    sh 'cd /$WORKSPACE/Project/Jmeter/'
                     sh 'docker compose up -d --scale slave = 5' //change number appropriate 
                 }
             }

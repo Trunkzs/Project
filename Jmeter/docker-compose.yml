@@ -10,6 +10,5 @@ services:
 
   slave:
     image: jmeter-alpine
-    tty: true
-    container_name: jmeter-slave1    
+    tty: true   
     # Add any additional configuration for the slave
